@@ -6,7 +6,10 @@ import html2canvas from "html2canvas";
 import "./MenuPage.css";
 
 const RAZORPAY_KEY_ID = "rzp_test_RFVtNEzSdHSC7c";
-const backend = "http://127.0.0.1:8000/api";
+
+// ✅ Use deployed backend URL (or .env variable if exists)
+const backend =
+  import.meta.env.VITE_API_URL || "https://digmenu-backend.onrender.com/api";
 
 export default function MenuPage() {
   const [menuItems, setMenuItems] = useState([]);
@@ -30,7 +33,10 @@ export default function MenuPage() {
           fetch(`${backend}/menu-items/`),
           fetch(`${backend}/categories/`),
         ]);
-        const [items, cats] = await Promise.all([itemsRes.json(), catRes.json()]);
+        const [items, cats] = await Promise.all([
+          itemsRes.json(),
+          catRes.json(),
+        ]);
         setMenuItems(items);
         setCategories(cats);
         if (cats.length > 0) setSelectedCategory(cats[0].id);
@@ -161,7 +167,6 @@ export default function MenuPage() {
                 }),
             };
 
-            // Save history to localStorage
             const updatedHistory = [...orderHistory, newOrder];
             setOrderHistory(updatedHistory);
             localStorage.setItem("orderHistory", JSON.stringify(updatedHistory));
@@ -208,6 +213,7 @@ export default function MenuPage() {
 
     handlePayment(getTotal());
   };
+
 
   const selectedList = Object.keys(selectedItems)
     .filter((id) => selectedItems[id] > 0)
