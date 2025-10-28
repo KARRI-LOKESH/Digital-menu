@@ -1,76 +1,132 @@
+/* Navbar.css */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: linear-gradient(90deg, #ff9f43, #ff6f00);
-  color: white;
-  font-family: "Poppins", sans-serif;
+  background: #ff6600;
+  color: #fff;
+  padding: 12px 25px;
   position: sticky;
   top: 0;
   z-index: 100;
-}
-body{
-    margin:0;
-    padding:0;
-}
-.navbar-logo {
-  font-size: 1.5rem;
-  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* --------------------------- */
+/* Logo                        */
+/* --------------------------- */
+.navbar-logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+/* --------------------------- */
+/* Links                       */
+/* --------------------------- */
 .navbar-links {
   display: flex;
-  gap: 1rem;
+  gap: 25px;
 }
 
 .navbar-links a {
-  color: white;
   text-decoration: none;
+  color: #fff;
   font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: background 0.3s;
+  position: relative;
+  transition: color 0.2s ease;
 }
 
 .navbar-links a:hover {
-  background: rgba(255, 255, 255, 0.2);
+  color: #ffe7cc;
 }
 
-/* Hamburger menu */
+/* Active underline effect */
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+/* --------------------------- */
+/* Hamburger Menu (Mobile)     */
+/* --------------------------- */
 .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  gap: 4px;
+  gap: 5px;
 }
 
 .hamburger div {
   width: 25px;
   height: 3px;
-  background-color: white;
+  background: #fff;
+  border-radius: 2px;
   transition: all 0.3s ease;
 }
 
+/* --------------------------- */
+/* Responsive Layout           */
+/* --------------------------- */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+
   .navbar-links {
+    display: none;
     position: absolute;
-    top: 70px;
-    right: 0; 
-    background: #ff6f00;
+    top: 60px;
+    right: 0;
+    background: #ff6600;
     flex-direction: column;
-    width: 200px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    border-radius: 10px 0 0 10px;
-    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideDown 0.3s ease;
   }
 
   .navbar-links.active {
-    transform: translateX(0);
+    display: flex;
+  }
+
+  .navbar-links a {
+    padding: 10px 0;
+    font-size: 1rem;
   }
 
   .hamburger {
     display: flex;
+  }
+}
+
+/* --------------------------- */
+/* Animations                  */
+/* --------------------------- */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

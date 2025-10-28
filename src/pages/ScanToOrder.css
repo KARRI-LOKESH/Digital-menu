@@ -72,3 +72,27 @@
     box-shadow: 0 0 40px rgba(0, 255, 200, 0.6);
   }
 }
+.scan-btn {
+  margin-top: 15px;
+  background: #ff6600;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.scan-btn:hover {
+  background: #e55500;
+  transform: translateY(-2px);
+}
+
+.scan-result {
+  margin-top: 10px;
+  color: #28a745;
+  font-weight: 600;
+  word-wrap: break-word;
+}
