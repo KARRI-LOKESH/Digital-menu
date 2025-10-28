@@ -1,7 +1,7 @@
 /* ServePage.css */
 body {
   font-family: "Poppins", sans-serif;
-  background: #fafafa;
+  background: #1d1c1c;
   margin: 0;
   padding: 0;
 }
@@ -29,9 +29,9 @@ h1 {
 .alert-box {
   text-align: center;
   padding: 12px;
-  background: #ffe7cc;
+  background: #0a0a0a;
   border: 1px solid #ffae42;
-  color: #333;
+  color: #f4ecec;
   border-radius: 10px;
   margin-bottom: 20px;
   animation: fadeIn 0.4s ease;

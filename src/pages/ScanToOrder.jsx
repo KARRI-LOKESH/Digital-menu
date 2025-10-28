@@ -86,7 +86,7 @@ export default function ScanToOrder() {
           whileTap={{ scale: 0.95 }}
           onClick={handleScan}
         >
-          {scanning ? "📷 Scanning..." : "📱 Scan Digitally"}
+          {scanning ? "📷 Scanning..." : " Scan Digitally"}
         </motion.button>
 
         {scanResult && (
