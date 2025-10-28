@@ -29,9 +29,9 @@ h1 {
 .alert-box {
   text-align: center;
   padding: 12px;
-  background: #0a0a0a;
+  background: #ffe7cc;
   border: 1px solid #ffae42;
-  color: #f4ecec;
+  color: #333;
   border-radius: 10px;
   margin-bottom: 20px;
   animation: fadeIn 0.4s ease;
