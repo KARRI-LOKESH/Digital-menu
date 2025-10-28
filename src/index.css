@@ -1,0 +1,23 @@
+.menu-item {
+  border: 1px solid #ddd;
+  padding: 12px;
+  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+  background: #fff;
+  transition: 0.3s;
+}
+.menu-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.menu-img {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.controls input {
+  width: 50px;
+  margin-right: 8px;
+}

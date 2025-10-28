@@ -1,0 +1,132 @@
+/* src/pages/CartPage.css */
+
+/* General page */
+.cart-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+/* Heading */
+.cart-page h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Cart box container */
+.cart-box {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Individual cart item */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item span {
+  font-weight: 500;
+  color: #444;
+  flex: 1;
+}
+
+/* Quantity input */
+.cart-item input[type="number"] {
+  width: 50px;
+  padding: 0.3rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin: 0 0.5rem;
+}
+
+/* Remove button */
+.cart-item button {
+  background-color: #ff5555;
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cart-item button:hover {
+  background-color: #e03e3e;
+}
+
+/* Total amount */
+.cart-box h3 {
+  text-align: right;
+  margin-top: 1rem;
+  color: #222;
+}
+
+/* Input fields */
+.cart-box input[type="text"],
+.cart-box input[type="tel"] {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Buttons container */
+.cart-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Online pay button */
+.cart-buttons button {
+  background-color: #3399cc;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cart-buttons button:disabled {
+  background-color: #b0d4e3;
+  cursor: not-allowed;
+}
+
+.cart-buttons button:hover:not(:disabled) {
+  background-color: #1f7aaa;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 500px) {
+  .cart-box {
+    padding: 1.5rem;
+  }
+
+  .cart-item input[type="number"] {
+    width: 40px;
+  }
+
+  .cart-buttons button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}

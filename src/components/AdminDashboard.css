@@ -1,0 +1,95 @@
+.admin-container {
+  padding: 20px;
+  background-color: #121212;
+  color: white;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+h1 {
+  color: #ff7b00;
+  margin-bottom: 20px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px 10px;
+  border: 1px solid #2c2c2c;
+  text-align: center;
+  font-size: 14px;
+}
+
+.admin-table th {
+  background-color: #1f1f1f;
+  color: #ff7b00;
+  font-weight: 600;
+}
+
+.admin-table tr {
+  background-color: #1c1c1c;
+  transition: transform 0.2s;
+}
+
+.admin-table tr:hover {
+  transform: scale(1.01);
+  background-color: #2a2a2a;
+}
+
+.served-row {
+  background-color: #2b3a2b !important;
+}
+
+.order-items div {
+  margin: 2px 0;
+  font-size: 13px;
+  text-align: left;
+}
+
+.serve-btn {
+  padding: 6px 14px;
+  background-color: #ff7b00;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.serve-btn:hover {
+  background-color: #ff5500;
+}
+
+.served-badge {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.no-orders {
+  padding: 15px;
+  text-align: center;
+  color: #ff7b00;
+}
+
+@media (max-width: 600px) {
+  .admin-table th,
+  .admin-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .order-items div {
+    font-size: 11px;
+  }
+}

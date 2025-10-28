@@ -1,0 +1,156 @@
+.serve-container {
+  padding: 20px;
+  background-color: #121212;
+  color: white;
+  min-height: 100vh;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  color: #ff7b00;
+  margin-bottom: 10px;
+}
+
+.alert-box {
+  background: #ffb703;
+  color: #000;
+  padding: 10px;
+  margin: 10px auto;
+  width: fit-content;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.serve-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.serve-table th,
+.serve-table td {
+  border: 1px solid #2c2c2c;
+  padding: 10px;
+  text-align: center;
+}
+
+.serve-table th {
+  background: #1f1f1f;
+  color: #ff7b00;
+}
+
+.serve-table td input {
+  padding: 5px;
+  border-radius: 6px;
+  border: none;
+  background: #2b2b2b;
+  color: white;
+  width: 100px;
+  text-align: center;
+}
+
+.serve-table button {
+  background: #ff7b00;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.serve-table button:hover {
+  background: #ff5500;
+}
+
+.history-toggle {
+  margin: 20px 0;
+}
+
+.history-toggle button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #ff7b00;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.history-toggle button:hover {
+  background: #ff5500;
+}
+
+.history-box {
+  background: #1f1f1f;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.3);
+  margin-top: 20px;
+  text-align: left;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.history-box h3 {
+  color: #ff7b00;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.history-filters {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.history-filters input[type="date"] {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background: #2b2b2b;
+  color: white;
+}
+
+.history-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-box th,
+.history-box td {
+  border: 1px solid #2c2c2c;
+  padding: 10px;
+  text-align: center;
+}
+
+.history-box th {
+  background: #1f1f1f;
+  color: #ff7b00;
+}
+
+.history-box td {
+  background: #1c1c1c;
+}
+
+.history-box p {
+  margin-top: 10px;
+  color: #ff7b00;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .serve-table,
+  .history-box table {
+    font-size: 14px;
+  }
+
+  .history-filters {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

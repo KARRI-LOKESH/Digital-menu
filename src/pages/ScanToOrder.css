@@ -1,0 +1,55 @@
+.scan-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.scan-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.qr-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  transition: transform 0.3s ease;
+}
+
+.qr-card:hover {
+  transform: scale(1.05);
+}
+
+.qr-image {
+  width: 220px;
+  height: 220px;
+  border-radius: 15px;
+  border: 4px solid #ff9f43;
+  padding: 10px;
+  background: #fff;
+}
+
+.qr-card p {
+  margin-top: 1rem;
+  color: #444;
+  font-size: 1.1rem;
+}
+
+.scan-footer {
+  margin-top: 3rem;
+  color: #555;
+  font-size: 1rem;
+}
+
+.scan-footer span {
+  color: #ff9f43;
+  font-weight: 600;
+}
