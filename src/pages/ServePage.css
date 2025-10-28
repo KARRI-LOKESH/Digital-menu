@@ -1,220 +1,156 @@
 .serve-container {
-font-family: "Poppins", sans-serif;
-background: linear-gradient(135deg, #0b0b0c, #050411, #0a0a0b);
-color: #fff;
-min-height: 100vh;
-padding: 40px 5%;
-text-align: center;
+  padding: 20px;
+  background-color: #121212;
+  color: white;
+  min-height: 100vh;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
-/* ------------------------------
-Title
------------------------------- */
-.serve-container h1 {
-font-size: 2.3rem;
-color: #ff6600;
-margin-bottom: 25px;
-text-shadow: 0 0 15px #ff6600;
+h1 {
+  color: #ff7b00;
+  margin-bottom: 10px;
 }
 
-/* ------------------------------
-Alert Box
------------------------------- */
 .alert-box {
-background: rgba(255, 102, 0, 0.1);
-color: #ffb84d;
-border: 1px solid rgba(255, 102, 0, 0.4);
-padding: 12px 18px;
-border-radius: 8px;
-font-weight: 600;
-display: inline-block;
-margin-bottom: 20px;
-backdrop-filter: blur(10px);
-box-shadow: 0 0 15px rgba(255, 102, 0, 0.2);
+  background: #ffb703;
+  color: #000;
+  padding: 10px;
+  margin: 10px auto;
+  width: fit-content;
+  border-radius: 6px;
+  font-weight: 600;
 }
 
-/* ------------------------------
-Serve Table
------------------------------- */
 .serve-table {
-width: 100%;
-border-collapse: collapse;
-background: rgba(255, 255, 255, 0.05);
-border-radius: 15px;
-overflow: hidden;
-box-shadow: 0 0 25px rgba(255, 102, 0, 0.15);
-margin-bottom: 40px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
 .serve-table th,
 .serve-table td {
-padding: 12px;
-border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #2c2c2c;
+  padding: 10px;
+  text-align: center;
 }
 
 .serve-table th {
-background: rgba(255, 255, 255, 0.08);
-color: #ff6600;
-font-weight: 600;
-letter-spacing: 0.5px;
+  background: #1f1f1f;
+  color: #ff7b00;
 }
 
-.serve-table td {
-color: #e0e0e0;
+.serve-table td input {
+  padding: 5px;
+  border-radius: 6px;
+  border: none;
+  background: #2b2b2b;
+  color: white;
+  width: 100px;
+  text-align: center;
 }
 
-.serve-table tr:hover {
-background: rgba(255, 255, 255, 0.08);
-transition: 0.3s;
+.serve-table button {
+  background: #ff7b00;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-/* ------------------------------
-Input Fields
------------------------------- */
-.serve-table input {
-padding: 6px 10px;
-border-radius: 8px;
-border: 1px solid #ff6600;
-background: rgba(0, 0, 0, 0.3);
-color: #fff;
-text-align: center;
-outline: none;
-transition: all 0.3s ease;
-}
-
-.serve-table input:focus {
-box-shadow: 0 0 10px #ff6600;
-}
-
-/* ------------------------------
-Buttons
------------------------------- */
-.serve-table button,
-.history-toggle button {
-background: #ff6600;
-color: #fff;
-border: none;
-border-radius: 8px;
-padding: 8px 14px;
-cursor: pointer;
-font-weight: 600;
-transition: all 0.3s ease;
-box-shadow: 0 0 15px rgba(255, 102, 0, 0.3);
-}
-
-.serve-table button:hover,
-.history-toggle button:hover {
-background: #e55500;
-transform: translateY(-2px);
-box-shadow: 0 0 25px #ff6600;
+.serve-table button:hover {
+  background: #ff5500;
 }
 
 .history-toggle {
-margin-bottom: 20px;
+  margin: 20px 0;
 }
 
-/* ------------------------------
-History Box
------------------------------- */
+.history-toggle button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #ff7b00;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.history-toggle button:hover {
+  background: #ff5500;
+}
+
 .history-box {
-background: rgba(255, 255, 255, 0.05);
-border-radius: 15px;
-box-shadow: 0 0 25px rgba(255, 102, 0, 0.2);
-padding: 25px;
-margin-top: 20px;
-backdrop-filter: blur(12px);
+  background: #1f1f1f;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.3);
+  margin-top: 20px;
+  text-align: left;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .history-box h3 {
-color: #ff6600;
-text-shadow: 0 0 10px #ff6600;
-margin-bottom: 15px;
+  color: #ff7b00;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .history-filters {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 10px;
-margin-bottom: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
 }
 
-.history-filters label {
-color: #ffcc80;
-font-weight: 500;
-}
-
-.history-filters input {
-padding: 6px 10px;
-border-radius: 8px;
-border: 1px solid #ff6600;
-background: rgba(0, 0, 0, 0.4);
-color: #fff;
-outline: none;
+.history-filters input[type="date"] {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background: #2b2b2b;
+  color: white;
 }
 
 .history-box table {
-width: 100%;
-border-collapse: collapse;
-color: #e0e0e0;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .history-box th,
 .history-box td {
-padding: 10px;
-border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #2c2c2c;
+  padding: 10px;
+  text-align: center;
 }
 
 .history-box th {
-color: #ff6600;
-background: rgba(255, 255, 255, 0.08);
-font-weight: 600;
+  background: #1f1f1f;
+  color: #ff7b00;
 }
 
-.history-box tr:hover {
-background: rgba(255, 255, 255, 0.07);
+.history-box td {
+  background: #1c1c1c;
 }
 
-/* ------------------------------
-Animations
------------------------------- */
-.fancy-glow {
-animation: pulseGlow 3s infinite alternate;
+.history-box p {
+  margin-top: 10px;
+  color: #ff7b00;
+  text-align: center;
 }
 
-@keyframes pulseGlow {
-0% {
-box-shadow: 0 0 10px rgba(0, 255, 200, 0.3);
-}
-100% {
-box-shadow: 0 0 30px rgba(0, 255, 200, 0.6);
-}
-}
+@media (max-width: 600px) {
+  .serve-table,
+  .history-box table {
+    font-size: 14px;
+  }
 
-/* ------------------------------
-Responsive
------------------------------- */
-@media (max-width: 768px) {
-.serve-container {
-padding: 25px 3%;
-}
-
-.serve-table,
-.history-box table {
-font-size: 0.85rem;
-}
-
-.serve-table th,
-.serve-table td {
-padding: 8px;
-}
-
-.serve-table button {
-padding: 6px 10px;
-font-size: 0.8rem;
-}
-
-.serve-container h1 {
-font-size: 1.7rem;
-}
+  .history-filters {
+    flex-direction: column;
+    gap: 5px;
+  }
 }
