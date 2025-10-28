@@ -5,7 +5,7 @@ import "./ScanToOrder.css";
 export default function ScanToOrder() {
   // ✅ QR now points to your new deployed site
   const qrImageUrl =
-    "https://api.qrserver.com/v1/create-qr-code/?data=https://digital-menu-3qq1.vercel.app/menu/&size=250x250";
+  "https://api.qrserver.com/v1/create-qr-code/?data=https://digital-menu-4696.vercel.app/menu/&size=250x250";
 
   return (
     <div className="scan-container">
