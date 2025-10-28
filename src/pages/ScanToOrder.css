@@ -4,52 +4,71 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
   text-align: center;
   font-family: "Poppins", sans-serif;
+  padding: 20px;
 }
 
 .scan-title {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
 }
 
 .qr-card {
-  background: white;
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  width: 320px;
-  transition: transform 0.3s ease;
+  padding: 25px 40px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
 }
 
 .qr-card:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 255, 200, 0.4);
 }
 
 .qr-image {
-  width: 220px;
-  height: 220px;
-  border-radius: 15px;
-  border: 4px solid #ff9f43;
-  padding: 10px;
-  background: #fff;
+  width: 250px;
+  height: 250px;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
 }
 
-.qr-card p {
-  margin-top: 1rem;
-  color: #444;
+.qr-image:hover {
+  transform: rotate(2deg) scale(1.03);
+}
+
+.scan-text {
   font-size: 1.1rem;
+  color: #e0e0e0;
 }
 
 .scan-footer {
-  margin-top: 3rem;
-  color: #555;
-  font-size: 1rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #bbb;
 }
 
 .scan-footer span {
-  color: #ff9f43;
+  color: #00ffcc;
   font-weight: 600;
+}
+
+.fancy-glow {
+  animation: pulseGlow 3s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(0, 255, 200, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 40px rgba(0, 255, 200, 0.6);
+  }
 }
