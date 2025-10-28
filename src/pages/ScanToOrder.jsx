@@ -1,15 +1,10 @@
-// src/pages/ScanToOrder.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import "./ScanToOrder.css";
 
-// ✅ Use environment variable for backend (helps in deployment)
-const backend =
-  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
-
 export default function ScanToOrder() {
-  // ✅ Construct dynamic QR image path
-  const qrImageUrl = `${backend}/media/qrcodes/menu_qr.png`;
+  // ✅ Directly link to deployed menu page
+  const qrImageUrl = "https://api.qrserver.com/v1/create-qr-code/?data=https://digital-menu-sand.vercel.app/menu/&size=250x250";
 
   return (
     <div className="scan-container">
