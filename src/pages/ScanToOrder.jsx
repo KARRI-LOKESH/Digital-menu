@@ -1,41 +1,70 @@
-import React, { useEffect, useState } from "react";
-import { Html5QrcodeScanner } from "html5-qrcode";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./ScanToOrder.css";
 
 export default function ScanToOrder() {
+  const [scanning, setScanning] = useState(false);
   const [scanResult, setScanResult] = useState(null);
 
-  useEffect(() => {
-    const scanner = new Html5QrcodeScanner("reader", {
-      qrbox: { width: 250, height: 250 },
-      fps: 10,
-    });
+  // ✅ Your Menu Page QR Link
+  const menuLink = "https://digital-menu-4696.vercel.app/menu/";
+  const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${menuLink}&size=250x250`;
 
-    scanner.render(
-      (decodedText) => {
-        setScanResult(decodedText);
+  // ✅ If device supports BarcodeDetector → use it
+  const handleScan = async () => {
+    if (!("BarcodeDetector" in window)) {
+      // fallback → open menu directly
+      window.location.href = menuLink;
+      return;
+    }
 
-        // ✅ Try opening in new tab
-        const newTab = window.open(decodedText, "_blank");
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "environment" },
+      });
+      setScanning(true);
 
-        // ✅ Fallback if pop-up blocked
-        if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
-          window.location.href = decodedText;
+      const video = document.createElement("video");
+      video.srcObject = stream;
+      video.setAttribute("playsinline", true);
+      video.play();
+
+      const barcodeDetector = new window.BarcodeDetector({
+        formats: ["qr_code"],
+      });
+
+      const checkFrame = async () => {
+        if (!scanning) {
+          stream.getTracks().forEach((track) => track.stop());
+          return;
         }
 
-        // ✅ Clear scanner after success
-        scanner.clear().catch((err) => console.error("Clear error:", err));
-      },
-      (error) => {
-        console.warn("QR Scan error:", error);
-      }
-    );
+        const canvas = document.createElement("canvas");
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(video, 0, 0);
 
-    return () => {
-      scanner.clear().catch((err) => console.error(err));
-    };
-  }, []);
+        const barcodes = await barcodeDetector.detect(canvas);
+        if (barcodes.length > 0) {
+          const code = barcodes[0].rawValue;
+          setScanResult(code);
+          setScanning(false);
+          stream.getTracks().forEach((track) => track.stop());
+          window.location.href = code; // ✅ Direct redirect to menu
+          return;
+        }
+
+        requestAnimationFrame(checkFrame);
+      };
+
+      requestAnimationFrame(checkFrame);
+    } catch (err) {
+      console.error(err);
+      // if user denies camera → fallback to open directly
+      window.location.href = menuLink;
+    }
+  };
 
   return (
     <div className="scan-container">
@@ -54,13 +83,26 @@ export default function ScanToOrder() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        <div id="reader" className="qr-reader"></div>
+        {/* ✅ Clicking the QR directly redirects */}
+        <img
+          src={qrImageUrl}
+          alt="Menu QR"
+          className="qr-image"
+          onClick={() => (window.location.href = menuLink)}
+        />
 
-        {scanResult && (
-          <p className="scan-result">
-            ✅ Redirecting to: <span>{scanResult}</span>
-          </p>
-        )}
+        <p className="scan-text">Tap the QR to open our digital menu instantly!</p>
+
+        {/* Digital Scan Option */}
+        <motion.button
+          className="scan-btn"
+          whileTap={{ scale: 0.95 }}
+          onClick={handleScan}
+        >
+          {scanning ? "📷 Scanning..." : "Scan Digitally"}
+        </motion.button>
+
+        {scanResult && <p className="scan-result">✅ Redirecting...</p>}
       </motion.div>
 
       <motion.footer

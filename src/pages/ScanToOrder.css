@@ -1,103 +1,83 @@
-/* ================================
-   Lokesh Digital Menu Scanner
-   ================================ */
-
 body {
   margin: 0;
+  background: radial-gradient(circle at top, #0a0a0a, #1a1a1a);
+  color: white;
   font-family: "Poppins", sans-serif;
-  background: radial-gradient(circle at top, #0a0a0a, #141414);
-  color: #fff;
-  min-height: 100vh;
-  overflow-x: hidden;
 }
 
-/* --- Main Container --- */
 .scan-container {
+  text-align: center;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 2rem;
+  min-height: 100vh;
 }
 
-/* --- Title --- */
 .scan-title {
   font-size: 2rem;
-  font-weight: 700;
   color: #ffb347;
-  text-shadow: 0 0 10px #ffb347aa;
+  text-shadow: 0 0 10px #ffb347;
   margin-bottom: 1rem;
 }
 
-/* --- QR Card --- */
 .qr-card {
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
   padding: 1.5rem;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px rgba(255, 179, 71, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 179, 71, 0.3);
+}
+
+.qr-image {
+  width: 250px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.qr-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 179, 71, 0.6);
+}
+
+.scan-text {
+  margin-top: 1rem;
+  color: #ccc;
+}
+
+.scan-btn {
+  background: linear-gradient(90deg, #ffb347, #ffcc33);
+  border: none;
+  color: #000;
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 1rem;
   transition: all 0.3s ease;
 }
 
-.qr-card:hover {
-  box-shadow: 0 0 25px rgba(255, 179, 71, 0.4);
+.scan-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #ffcc33, #ffb347);
 }
 
-.qr-reader {
-  width: 260px;
-  height: auto;
-  margin: auto;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-/* --- Scan Result --- */
 .scan-result {
   margin-top: 1rem;
-  font-size: 0.95rem;
-  color: #a0ffa0;
-}
-
-.scan-result span {
   color: #00ffcc;
-  font-weight: 600;
 }
 
-/* --- Fancy Glow --- */
-.fancy-glow {
-  animation: pulseGlow 2s infinite alternate;
-}
-
-@keyframes pulseGlow {
-  from {
-    box-shadow: 0 0 10px rgba(255, 179, 71, 0.3);
-  }
-  to {
-    box-shadow: 0 0 25px rgba(255, 179, 71, 0.6);
-  }
-}
-
-/* --- Footer --- */
 .scan-footer {
   margin-top: 2rem;
+  color: #aaa;
   font-size: 0.9rem;
-  color: #ccc;
 }
 
 .scan-footer span {
   color: #ffb347;
-  font-weight: 600;
 }
-
-/* --- Responsive --- */
-@media (max-width: 600px) {
-  .scan-title {
-    font-size: 1.6rem;
-  }
-
-  .qr-card {
-    width: 90%;
-    padding: 1rem;
-  }
+.scan-footer a {
+  color: #ffb347;
+  text-decoration: none;
 }
