@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import "./ScanToOrder.css";
 
 export default function ScanToOrder() {
-  // ✅ QR directly opens your deployed menu page
+  // ✅ QR now points to your new deployed site
   const qrImageUrl =
-    "https://api.qrserver.com/v1/create-qr-code/?data=https://digital-menu-sand.vercel.app/menu/&size=250x250";
+    "https://api.qrserver.com/v1/create-qr-code/?data=https://digital-menu-3qq1.vercel.app/menu/&size=250x250";
 
   return (
     <div className="scan-container">
@@ -25,7 +25,9 @@ export default function ScanToOrder() {
         transition={{ duration: 0.8, delay: 0.3 }}
       >
         <img src={qrImageUrl} alt="Menu QR" className="qr-image" />
-        <p className="scan-text">Scan this QR code to explore our delicious menu!</p>
+        <p className="scan-text">
+          Scan this QR code to explore our delicious menu!
+        </p>
       </motion.div>
 
       <motion.footer
