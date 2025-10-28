@@ -1,4 +1,3 @@
-// src/pages/MenuPage.jsx
 import { useEffect, useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import jsPDF from "jspdf";
@@ -6,10 +5,7 @@ import html2canvas from "html2canvas";
 import "./MenuPage.css";
 
 const RAZORPAY_KEY_ID = "rzp_test_RFVtNEzSdHSC7c";
-
-// ✅ Use deployed backend URL (or .env variable if exists)
-const backend =
-  import.meta.env.VITE_API_URL || "https://digmenu-backend.onrender.com/api";
+const backend = "https://digmenu-backend.onrender.com/api";
 
 export default function MenuPage() {
   const [menuItems, setMenuItems] = useState([]);
@@ -106,7 +102,6 @@ export default function MenuPage() {
                 )
               )
             );
-
             clearInterval(interval);
           }
         } catch (err) {
@@ -163,7 +158,11 @@ export default function MenuPage() {
                 .filter((id) => selectedItems[id] > 0)
                 .map((id) => {
                   const item = menuItems.find((i) => i.id === parseInt(id));
-                  return { name: item.name, qty: selectedItems[id], price: item.price };
+                  return {
+                    name: item.name,
+                    qty: selectedItems[id],
+                    price: item.price,
+                  };
                 }),
             };
 
@@ -214,7 +213,6 @@ export default function MenuPage() {
     handlePayment(getTotal());
   };
 
-
   const selectedList = Object.keys(selectedItems)
     .filter((id) => selectedItems[id] > 0)
     .map((id) => {
@@ -259,9 +257,6 @@ export default function MenuPage() {
     });
   };
 
-  // ----------------------------
-  // Re-order previous order
-  // ----------------------------
   const reorder = (order) => {
     const newSelected = {};
     order.items.forEach((i) => {
@@ -280,7 +275,6 @@ export default function MenuPage() {
 
       {alertMsg && <div className="alert-box">{alertMsg}</div>}
 
-      {/* Table select */}
       <div className="table-select">
         <label>🪑 Select Table Number:</label>
         <select
@@ -296,7 +290,6 @@ export default function MenuPage() {
         </select>
       </div>
 
-      {/* Category tabs */}
       <div className="category-tabs">
         {categories.map((cat) => (
           <button
@@ -309,7 +302,6 @@ export default function MenuPage() {
         ))}
       </div>
 
-      {/* Menu grid */}
       <div className="menu-grid">
         {filteredItems.map((item) => (
           <div className="menu-card" key={item.id}>
@@ -335,7 +327,6 @@ export default function MenuPage() {
         ))}
       </div>
 
-      {/* Selected Items */}
       {selectedList.length > 0 && (
         <div className="cart-summary">
           <h2>🛒 Your Order</h2>
@@ -359,7 +350,6 @@ export default function MenuPage() {
         </div>
       )}
 
-      {/* QR Section */}
       {showQR && orderNumber && serveCode && (
         <div className="qr-section">
           <h4>
@@ -372,7 +362,6 @@ export default function MenuPage() {
         </div>
       )}
 
-      {/* History section */}
       {orderHistory.length > 0 && (
         <div className="history-box">
           <h3>📜 Order History</h3>
@@ -408,7 +397,7 @@ export default function MenuPage() {
                     <button onClick={() => downloadSlip(h)}>Download Slip</button>
                   </td>
                   <td>
-                  <button onClick={() => reorder(h)}>Re-order</button>
+                    <button onClick={() => reorder(h)}>Re-order</button>
                   </td>
                 </tr>
               ))}
@@ -419,4 +408,3 @@ export default function MenuPage() {
     </div>
   );
 }
-

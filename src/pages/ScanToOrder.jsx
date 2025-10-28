@@ -1,9 +1,15 @@
+// src/pages/ScanToOrder.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import "./ScanToOrder.css";
 
+// ✅ Use environment variable for backend (helps in deployment)
+const backend =
+  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
 export default function ScanToOrder() {
-  const qrImageUrl = "http://127.0.0.1:8000/media/qrcodes/menu_qr.png";
+  // ✅ Construct dynamic QR image path
+  const qrImageUrl = `${backend}/media/qrcodes/menu_qr.png`;
 
   return (
     <div className="scan-container">

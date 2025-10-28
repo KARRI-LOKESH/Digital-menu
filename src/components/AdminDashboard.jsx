@@ -1,15 +1,20 @@
+// src/pages/AdminDashboard.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AdminDashboard.css";
 
-const backend = "http://127.0.0.1:8000/api";
+// ✅ Use environment variable for deployment (fallback to localhost)
+const backend =
+  import.meta.env.VITE_API_URL
+    ? `${import.meta.env.VITE_API_URL}/api`
+    : "http://127.0.0.1:8000/api";
 
 export default function AdminDashboard() {
   const [orders, setOrders] = useState([]);
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Fetch all orders
+  // ✅ Fetch all orders
   const fetchOrders = async () => {
     try {
       setLoading(true);
@@ -22,7 +27,7 @@ export default function AdminDashboard() {
     }
   };
 
-  // Fetch menu items to map IDs to names/prices
+  // ✅ Fetch menu items for name/price mapping
   const fetchMenu = async () => {
     try {
       const res = await axios.get(`${backend}/menu-items/`);
@@ -32,7 +37,7 @@ export default function AdminDashboard() {
     }
   };
 
-  // Serve order
+  // ✅ Handle serve order
   const handleServe = async (orderNumber) => {
     try {
       const res = await axios.post(`${backend}/serve-order/`, {
@@ -60,13 +65,11 @@ export default function AdminDashboard() {
   useEffect(() => {
     fetchOrders();
     fetchMenu();
-    const interval = setInterval(() => {
-      fetchOrders();
-    }, 5000); // refresh every 5s
+    const interval = setInterval(fetchOrders, 5000); // refresh every 5s
     return () => clearInterval(interval);
   }, []);
 
-  // Map menu item ID → object
+  // ✅ Map menu item ID to object
   const menuMap = {};
   menuItems.forEach((m) => (menuMap[m.id] = m));
 

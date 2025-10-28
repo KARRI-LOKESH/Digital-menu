@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./ServePage.css";
 
-const backend = "http://127.0.0.1:8000/api";
+// ✅ Use environment variable for deployment fallback to localhost
+const backend =
+  import.meta.env.VITE_API_URL
+    ? `${import.meta.env.VITE_API_URL}/api`
+    : "http://127.0.0.1:8000/api";
 
 export default function ServePage() {
   const [orders, setOrders] = useState([]);
@@ -11,10 +15,10 @@ export default function ServePage() {
   const [alertMsg, setAlertMsg] = useState("");
   const [showHistory, setShowHistory] = useState(false);
   const [history, setHistory] = useState([]);
-  const [dateFilter, setDateFilter] = useState([]);
+  const [dateFilter, setDateFilter] = useState("");
   const [menuItems, setMenuItems] = useState([]);
 
-  // Fetch menu items for price/name mapping
+  // ✅ Fetch menu items for price/name mapping
   useEffect(() => {
     const fetchMenu = async () => {
       try {
@@ -27,7 +31,7 @@ export default function ServePage() {
     fetchMenu();
   }, []);
 
-  // Fetch orders every 3 seconds
+  // ✅ Fetch orders every 3 seconds
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -42,6 +46,7 @@ export default function ServePage() {
     return () => clearInterval(interval);
   }, []);
 
+  // ✅ Handle delivery confirmation
   const handleDeliver = async (order_number) => {
     const code = serveCodeInput[order_number];
     if (!code) {
@@ -61,7 +66,7 @@ export default function ServePage() {
         setAlertMsg(`✅ Order #${order_number} delivered successfully!`);
         setServeCodeInput((prev) => ({ ...prev, [order_number]: "" }));
 
-        // Add to history
+        // ✅ Add to local history
         const order = orders.find((o) => o.order_number === order_number);
         setHistory((prev) => [
           { ...order, delivered_at: new Date() },
@@ -78,14 +83,18 @@ export default function ServePage() {
     setTimeout(() => setAlertMsg(""), 4000);
   };
 
+  // ✅ Create menu item map for quick lookup
   const menuMap = {};
   menuItems.forEach((m) => (menuMap[m.id] = m));
 
+  // ✅ Apply date filter (show only 20 latest records)
   const filteredHistory = history
     .filter((h) =>
-      dateFilter ? new Date(h.delivered_at).toISOString().slice(0, 10) === dateFilter : true
+      dateFilter
+        ? new Date(h.delivered_at).toISOString().slice(0, 10) === dateFilter
+        : true
     )
-    .slice(0, 20); // show only 20 records
+    .slice(0, 20);
 
   return (
     <div className="serve-container">
@@ -158,14 +167,14 @@ export default function ServePage() {
         </tbody>
       </table>
 
-      {/* History toggle */}
+      {/* ✅ History toggle */}
       <div className="history-toggle">
         <button onClick={() => setShowHistory((prev) => !prev)}>
           {showHistory ? "Hide History" : "Show History"}
         </button>
       </div>
 
-      {/* History Section */}
+      {/* ✅ History Section */}
       {showHistory && (
         <div className="history-box">
           <h3>📜 Delivered Orders History</h3>
