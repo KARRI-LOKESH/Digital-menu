@@ -6,14 +6,12 @@ export default function ScanToOrder() {
   const [scanning, setScanning] = useState(false);
   const [scanResult, setScanResult] = useState(null);
 
-  // ✅ Your Menu Page QR Link
   const menuLink = "https://digital-menu-4696.vercel.app/menu/";
-  const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${menuLink}&size=250x250`;
+  const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(menuLink)}&size=250x250`;
 
-  // ✅ If device supports BarcodeDetector → use it
   const handleScan = async () => {
+    // ✅ If BarcodeDetector not supported → open menu page directly
     if (!("BarcodeDetector" in window)) {
-      // fallback → open menu directly
       window.location.href = menuLink;
       return;
     }
@@ -27,15 +25,13 @@ export default function ScanToOrder() {
       const video = document.createElement("video");
       video.srcObject = stream;
       video.setAttribute("playsinline", true);
-      video.play();
+      await video.play();
 
-      const barcodeDetector = new window.BarcodeDetector({
-        formats: ["qr_code"],
-      });
+      const barcodeDetector = new window.BarcodeDetector({ formats: ["qr_code"] });
 
       const checkFrame = async () => {
         if (!scanning) {
-          stream.getTracks().forEach((track) => track.stop());
+          stream.getTracks().forEach((t) => t.stop());
           return;
         }
 
@@ -50,8 +46,8 @@ export default function ScanToOrder() {
           const code = barcodes[0].rawValue;
           setScanResult(code);
           setScanning(false);
-          stream.getTracks().forEach((track) => track.stop());
-          window.location.href = code; // ✅ Direct redirect to menu
+          stream.getTracks().forEach((t) => t.stop());
+          window.location.href = code; // ✅ redirect directly
           return;
         }
 
@@ -61,8 +57,7 @@ export default function ScanToOrder() {
       requestAnimationFrame(checkFrame);
     } catch (err) {
       console.error(err);
-      // if user denies camera → fallback to open directly
-      window.location.href = menuLink;
+      alert("Camera access denied or unavailable.");
     }
   };
 
@@ -83,26 +78,28 @@ export default function ScanToOrder() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        {/* ✅ Clicking the QR directly redirects */}
+        {/* ✅ Direct click on QR also redirects on mobile */}
         <img
           src={qrImageUrl}
           alt="Menu QR"
           className="qr-image"
           onClick={() => (window.location.href = menuLink)}
         />
+        <p className="scan-text">
+          Tap or Scan this QR code to explore our delicious menu!
+        </p>
 
-        <p className="scan-text">Tap the QR to open our digital menu instantly!</p>
-
-        {/* Digital Scan Option */}
         <motion.button
           className="scan-btn"
           whileTap={{ scale: 0.95 }}
           onClick={handleScan}
         >
-          {scanning ? "📷 Scanning..." : "Scan Digitally"}
+          {scanning ? "📷 Scanning..." : "📱 Scan Digitally"}
         </motion.button>
 
-        {scanResult && <p className="scan-result">✅ Redirecting...</p>}
+        {scanResult && (
+          <p className="scan-result">✅ Scanned Link: {scanResult}</p>
+        )}
       </motion.div>
 
       <motion.footer

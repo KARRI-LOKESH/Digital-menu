@@ -17,8 +17,8 @@ body {
 
 .scan-title {
   font-size: 2rem;
-  color: #ffb347;
-  text-shadow: 0 0 10px #ffb347;
+  color: #c44a11;
+  text-shadow: 0 0 10px #bd4002;
   margin-bottom: 1rem;
 }
 
@@ -26,7 +26,7 @@ body {
   background: rgba(255, 255, 255, 0.05);
   padding: 1.5rem;
   border-radius: 16px;
-  box-shadow: 0 0 20px rgba(255, 179, 71, 0.3);
+  box-shadow: 0 0 20px rgba(186, 96, 6, 0.3);
 }
 
 .qr-image {
@@ -38,7 +38,7 @@ body {
 
 .qr-image:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 179, 71, 0.6);
+  box-shadow: 0 0 20px rgba(214, 72, 6, 0.6);
 }
 
 .scan-text {
@@ -47,7 +47,7 @@ body {
 }
 
 .scan-btn {
-  background: linear-gradient(90deg, #ffb347, #ffcc33);
+  background: linear-gradient(90deg, #bc2f04, #db4008);
   border: none;
   color: #000;
   font-weight: 600;
@@ -60,7 +60,7 @@ body {
 
 .scan-btn:hover {
   transform: scale(1.05);
-  background: linear-gradient(90deg, #ffcc33, #ffb347);
+  background: linear-gradient(90deg, #d55105, #dd3506);
 }
 
 .scan-result {
@@ -75,9 +75,9 @@ body {
 }
 
 .scan-footer span {
-  color: #ffb347;
+  color: #cd5007;
 }
 .scan-footer a {
-  color: #ffb347;
+  color: #b0300d;
   text-decoration: none;
 }
