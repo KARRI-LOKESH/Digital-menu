@@ -15,8 +15,17 @@ export default function ScanToOrder() {
     scanner.render(
       (decodedText) => {
         setScanResult(decodedText);
-        window.open(decodedText, "_blank");
-        scanner.clear();
+
+        // ✅ Try opening in new tab
+        const newTab = window.open(decodedText, "_blank");
+
+        // ✅ Fallback if pop-up blocked
+        if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+          window.location.href = decodedText;
+        }
+
+        // ✅ Clear scanner after success
+        scanner.clear().catch((err) => console.error("Clear error:", err));
       },
       (error) => {
         console.warn("QR Scan error:", error);
@@ -45,10 +54,12 @@ export default function ScanToOrder() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        <div id="reader" style={{ width: "260px" }}></div>
+        <div id="reader" className="qr-reader"></div>
 
         {scanResult && (
-          <p className="scan-result">✅ Scanned Link: {scanResult}</p>
+          <p className="scan-result">
+            ✅ Redirecting to: <span>{scanResult}</span>
+          </p>
         )}
       </motion.div>
 
